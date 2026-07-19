@@ -79,9 +79,9 @@ target6 = r"""\chemfig{O=[:93]-[::45]N-[::270](-[::72]S-[::72](-[::348](-[::300]
 @pytest.mark.parametrize(
     "input_value,arg1,arg2,expected",
     [
-        ("996", "", "", target1),
+        ("996", "", "", target1),  # phenol
         ("996", "-r", "-u", target2),
-        (98, "-u", "-p", target3),
+        (98, "-u", "-p", target3),  # mercaptopyruvic acid
         (98, "-v", "-g sym", target4),
 #        (8964, "-y add", "-v", target5),  # flavitan
         (5904, "-y add", "-v", target6),  # penicillin G
