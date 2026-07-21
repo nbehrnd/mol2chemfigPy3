@@ -1,6 +1,12 @@
-# This workflow will install Python dependencies and run tests with a variety of Python versions
 
-name: CI
+# This workflow will install Python dependencies and run tests with a variety of Python versions
+# For easier maintenance, the matrix approach is retained.  To reduce the
+# the likelyhood of failure while interacting with NIH PubChem servers
+# which limit the number of requests per time period, it however is set
+# up as a sequential workflow.  There is a complementary rate limiting
+# throttle in `tests/test_read_pubchem.py`.
+
+name: CI latest Python interpreter
 
 on:
   push:
@@ -21,7 +27,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+        python-version: ["3.x"]
       max-parallel: 1  # to prevent parallelism which isn't good vs pubchem requests
 
     steps:
@@ -35,7 +41,10 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install pytest
         pip install -r requirements.txt
+        pip install -r other-requirements.txt
+        pip install .
+
     - name: Test with pytest
       run: |
-        pip install .
         pytest
+

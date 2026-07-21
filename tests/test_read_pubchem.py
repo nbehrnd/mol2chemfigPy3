@@ -1,9 +1,15 @@
 import platform
 import time
+
 import pytest
+
 from mol2chemfigPy3 import mol2chemfig
 
-_sys = platform.system()
+
+@pytest.fixture(autouse=True)
+def _throttle_pubchem():
+    yield
+    time.sleep(5)
 
 @pytest.fixture(autouse=True)
 def _throttle_pubchem():
