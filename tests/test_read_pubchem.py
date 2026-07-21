@@ -9,7 +9,7 @@ from mol2chemfigPy3 import mol2chemfig
 @pytest.fixture(autouse=True)
 def _throttle_pubchem():
     yield
-    time.sleep(5)
+    time.sleep(15)
 
 @pytest.fixture(autouse=True)
 def _throttle_pubchem():
