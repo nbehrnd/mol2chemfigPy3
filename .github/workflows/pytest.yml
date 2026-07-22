@@ -15,6 +15,7 @@ on:
   pull_request:
     branches: [ "main" ]
     paths: [ "tests/*.py", "mol2chemfigPy3/*.py", "setup.py", ".github/workflows/pytest.yml" ]
+  workflow_dispatch:
 
 permissions:
   contents: read
