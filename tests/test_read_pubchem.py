@@ -11,11 +11,6 @@ def _throttle_pubchem():
     yield
     time.sleep(15)
 
-@pytest.fixture(autouse=True)
-def _throttle_pubchem():
-    yield
-    time.sleep(3)
-
 target1 = r"""\chemfig{H-[:210,0.62]-[:150](-[:90]O-[:30,0.62]H)(%
 -[:270,,,,draw=none]\mcfcringle{1.3})-[:210](-[:150,0.62]H)-[:270](%
 -[:210,0.62]H)-[:330](-[:270,0.62]H)-[:30](-[:90])-[:330,0.62]H}"""
