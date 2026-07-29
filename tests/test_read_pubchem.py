@@ -1,8 +1,11 @@
 import platform
+from pathlib import Path
 import pytest
-from mol2chemfigPy3 import mol2chemfig
+from mol2chemfigPy3 import mol2chemfig, processor
+
 
 _sys = platform.system()
+FIXTURE_DIR = Path(__file__).parent / "data_pubchem"
 
 target1 = r"""\chemfig{H-[:210,0.62]-[:150](-[:90]O-[:30,0.62]H)(%
 -[:270,,,,draw=none]\mcfcringle{1.3})-[:210](-[:150,0.62]H)-[:270](%
@@ -68,6 +71,26 @@ elif _sys == "Darwin":
 -[::60]-[::120,,,,draw=none]\mcfcringle{1.3})-[::300]N=_[::300]-[::300](%
 -[::300]\phantom{N})=^[::60]N-[::60](=[::300]O)-[::60]N(-[::300]H)-[::60](%
 -[::60])=[::300]O}"""
+
+@pytest.fixture(autouse=True)
+def mock_pubchem_urlopen(monkeypatch):
+    """
+    Replace the live PubChem round trip with a canned SDF read from
+    tests/data_pubchem/<cid>.sdf, so this file's parametrized cases
+    exercise chemfig-rendering logic only, not network access.
+    Fixtures were captured once via the real pubchem_url and committed.
+    """
+    def _fake_urlopen(url, *a, **kw):
+        cid = url.rsplit("cid=", 1)[1].split("&")[0]
+        sdf_bytes = (FIXTURE_DIR / f"{cid}.sdf").read_bytes()
+
+        class _Resp:
+            def read(self_inner):
+                return sdf_bytes
+
+        return _Resp()
+
+    monkeypatch.setattr(processor.request, "urlopen", _fake_urlopen)    
 
 
 @pytest.mark.parametrize(
