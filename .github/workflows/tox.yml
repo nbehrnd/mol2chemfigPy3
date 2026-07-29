@@ -45,4 +45,5 @@ jobs:
       - uses: actions/setup-python@v6.2.0
         with:
           python-version: "3.x"
+      - run: pip install tox
       - run: tox -e connectivity
