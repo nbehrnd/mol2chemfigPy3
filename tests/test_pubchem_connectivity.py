@@ -12,7 +12,7 @@ def test_pubchem_smiles_resolves():
     smiles = urllib.parse.quote("c1ccncc1")  # pyridine
     url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/smiles/{smiles}/cids/JSON"
     last_err = None
-    for attempt in range(3):
+    for attempt in range(10):
         try:
             with urllib.request.urlopen(url, timeout=15) as resp:
                 data = json.loads(resp.read())
@@ -24,5 +24,6 @@ def test_pubchem_smiles_resolves():
             is_timeout = isinstance(exc, TimeoutError) or not isinstance(exc, urllib.error.HTTPError)
             if not is_server_busy and not is_timeout:
                 raise
-            time.sleep(2 ** attempt)
+            if attempt < 10:
+                time.sleep(5 ** attempt)
     pytest.fail(f"PubChem unreachable after retries: {last_err}")
