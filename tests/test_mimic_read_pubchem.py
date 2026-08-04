@@ -20,6 +20,7 @@ target4 = r"""\chemfig{@{sym3}O=[@{sym3-5}:90,1.613]@{sym5}(%
 -[@{sym1-8}::60]@{sym8}H}"""
 target5 = r"""\chemfig{H-[:340](-[::280]H)-[::80]S-[::240](-[::240])(-[::340]H)-[::80]H}"""
 
+
 @pytest.fixture(autouse=True)
 def mock_pubchem_urlopen(monkeypatch):
     """
