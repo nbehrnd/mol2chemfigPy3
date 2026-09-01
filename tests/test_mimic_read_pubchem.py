@@ -39,7 +39,7 @@ def mock_pubchem_urlopen(monkeypatch):
 
         return _Resp()
 
-    monkeypatch.setattr(processor.request, "urlopen", _fake_urlopen)    
+    monkeypatch.setattr(processor.request, "urlopen", _fake_urlopen)
 
 
 @pytest.mark.parametrize(

@@ -85,5 +85,5 @@ addopts = ["-ra"]
 #indent-style = "space"
 #skip-magic-trailing-comma = false
 
-#[tool.codespell]
-#skip = "*.smi"
+[tool.codespell]
+skip = "*.smi"
