@@ -1,7 +1,7 @@
 # mol2chemfigPy3
 
 [![PyPI](https://img.shields.io/pypi/v/mol2chemfigPy3?color=ff69b4)](https://pypi.org/project/mol2chemfigPy3/)
-![CI](https://github.com/Augus1999/mol2chemfigPy3/actions/workflows/pytest.yml/badge.svg)
+[![CI_tox](https://github.com/nbehrnd/mol2chemfigPy3/actions/workflows/tox.yml/badge.svg)](https://github.com/nbehrnd/mol2chemfigPy3/actions/workflows/tox.yml)
 ![black](https://img.shields.io/badge/code%20style-black-black)
 [![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://stand-with-ukraine.pp.ua)
 
