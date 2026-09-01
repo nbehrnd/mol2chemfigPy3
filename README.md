@@ -120,4 +120,3 @@ The website seems down, so here is a mirror [mol2chemfig Documentation Version 1
 ## License
 
 MIT license
-
