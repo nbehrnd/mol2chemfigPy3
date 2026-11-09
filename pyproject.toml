@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=42"]
+requires = ["setuptools==84.2.1"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
@@ -40,20 +40,20 @@ classifiers = [
 ]
 
 dependencies = [
-    "epam.indigo>=1.46.0",
-    "colorama>=0.4.6; platform_system == 'Windows'",
+    "epam.indigo==1.46.0",
+    "colorama==0.4.6; platform_system == 'Windows'",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "build>=1.2.2.post1",
-    "pytest>=9.1.1",
+    "build==1.6.1",
+    "pytest>=9.2.0",
 ]
 
 [dependency-groups]
 dev = [
-    "build>=1.2.2.post1",
-    "pytest>=9.1.1",
+    "build>=1.6.1",
+    "pytest>=9.2.0",
 ]
 
 [project.urls]
