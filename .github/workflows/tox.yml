@@ -17,7 +17,7 @@ jobs:
     - uses: actions/checkout@v7
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v6.2.0
+      uses: actions/setup-python@v7
       with:
         python-version: ${{ matrix.python-version }}
 
@@ -40,7 +40,7 @@ jobs:
       max-parallel: 1  # sequential runs as an additional throttle on requests
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-python@v6.2.0
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.x"
       - run: |
